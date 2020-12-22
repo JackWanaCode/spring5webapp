@@ -27,7 +27,8 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Author eric = new Author("Eric", "Evans");
         Book ddd = new Book("Book 1", "123456");
-        Publisher publisher = new Publisher("Oreilly", "123 Wood st", 95126);
+        Publisher publisher = new Publisher("ABC", "123 Wood st", 95126);
+        publisherRepository.save(publisher);
         eric.getBooks().add(ddd);
         ddd.getAuthors().add(eric);
 
@@ -52,6 +53,6 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Start boostrap");
         System.out.println("Number of books " + bookRepository.count());
-        System.out.println("Number of publisher " + publisherRepository.count());
+        System.out.println("Number of publisher " + publisher.getBooks().size());
     }
 }
